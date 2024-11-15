@@ -5,8 +5,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Türkçe alfabeye göre küçük ve büyük harf eşlemeleri
-alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
 alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
+alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
+
 
 # Şifreleme fonksiyonu
 def caesar_cipher_encode(plaintext, key):
@@ -41,62 +42,77 @@ st.title("🔐 Sezar Şifreleme ve Çözme Aracı")
 st.write("Metinlerinizi güvenli bir şekilde şifreleyin veya şifrelerini çözün!")
 
 # Yan sekmeler oluştur
-tab1, tab2, tab3 = st.tabs(["Açıklama", "Şifreleme", "Çözme"])
+tab1, tab2, tab3 = st.tabs(["Sezar Şifreleme Algoritması", "Şifreleme (Encode)", "Çözme (Decode)"])
+
 
 # Açıklama Sekmesi
 with tab1:
-    st.header("📚 Sezar Şifreleme Nedir? Nasıl Kullanılır?")
+    # Renkli bir başlık
+    st.markdown("<h2 style='color:#4A90E2;'>🔐 Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
+    
+    # Giriş açıklaması
+    st.write("Sezar Şifreleme, harfleri belirli bir kaydırma sayısına göre ileri veya geri alarak yapılan basit bir şifreleme algoritmasıdır. "
+             "Örneğin, bir harfi 3 birim sağa kaydırarak şifreleyebilir ve çözmek için aynı miktarda sola kaydırabilirsiniz.")
+    
+    # Algoritmanın açıklaması
+    st.markdown("<h3 style='color:#FF6347;'>📜 Adım Adım Sezar Şifreleme</h3>", unsafe_allow_html=True)
+    
     st.write("""
-    Sezar Şifreleme, harflerin belirli bir kaydırma sayısına göre ileri veya geri alınarak şifrelendiği basit bir şifreleme algoritmasıdır.
-    Örneğin, bir harf 3 birim sağa kaydırılarak şifrelenebilir ve çözme işlemi için 3 birim sola kaydırılarak orijinal haline döndürülür.
+    1. **Anahtar Seçin** 🔑: Şifreleme işlemi için bir kaydırma değeri (örneğin, 3) belirleyin.
+    2. **Şifreleme İşlemi** 🔐: Her harfi anahtar değeri kadar ileri kaydırın.
+    3. **Çözme İşlemi** 🔓: Şifrelenmiş metni geri almak için her harfi anahtar değeri kadar geri kaydırın.
     """)
-    st.write("**Kullanım Alanları:** Bu şifreleme yöntemi, özellikle basit güvenlik önlemleri için kullanılır ve tarih boyunca şifreli iletişimi sağlamak için yaygın olarak kullanılmıştır.")
-
-    # Türkçe alfabe ve pozisyon tablosunu gösterme
-    st.write("### Türkçe Alfabesi ve İndeksleme")
-    positions = list(range(29))  # 0-28 arası pozisyonlar
+    
+    # Algoritmanın nasıl çalıştığını açıklayan tablo
+    st.markdown("<h4 style='color:#32CD32;'>📊 Türkçe Alfabesi ve İndeksleme</h4>", unsafe_allow_html=True)
+    alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
+    alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
+    positions = list(range(29))  # Pozisyonlar
+    
     table = pd.DataFrame({
-        "Büyük Harfler": list(alphabet_upper),
-        "Küçük Harfler": list(alphabet_lower),
+        "Büyük Harf": list(alphabet_upper),
+        "Küçük Harf": list(alphabet_lower),
         "İndeks": positions
     })
-    st.dataframe(table)
-
-    # Etkileşimli Şifreleme ve Çözme Örneği
-    st.write("### Etkileşimli Şifreleme ve Çözme İşlemi")
-    st.write("1. Aşağıya **Merhaba Dünya** yazın ve 'Göster' butonuna basın.")
-    input_text = st.text_input("Şifrelemek istediğiniz metni yazın:", "Merhaba Dünya")
+    st.dataframe(table.style.highlight_max(axis=0), width=500)
     
-    if st.button("Göster"):
-        indices = [alphabet_lower.index(char) if char in alphabet_lower else -1 for char in input_text.lower()]
-        valid_indices = [idx for idx in indices if idx != -1]
-        labels = [char for char, idx in zip(input_text, indices) if idx != -1]
-        
-        fig, ax = plt.subplots()
-        ax.bar(range(len(valid_indices)), valid_indices, tick_label=labels)
-        ax.set_xlabel("Karakterler")
-        ax.set_ylabel("İndeks Değerleri")
-        st.pyplot(fig)
-        st.write(f"**İndeks Değerleri:** {valid_indices}")
+    # Kullanıcı etkileşimi için örnek
+    st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
+    st.write("Aşağıdaki örnekte, 'Merhaba Dünya' ifadesini 3 birim sağa kaydırarak nasıl şifrelediğimizi göreceksiniz.")
 
-    st.write("2. Şifrelemek için bir anahtar (örneğin 3) seçin ve 'Şifrele' butonuna basın.")
-    key = st.number_input("Anahtar (key) değeri seçin:", min_value=1, max_value=29, value=3, step=1)
+    # Örnek metin
+    example_text = "Merhaba Dünya"
+    example_key = 3
+    st.write(f"**Girdi:** {example_text}")
+    st.write(f"**Anahtar (Key):** {example_key}")
     
-    if st.button("Şifrele"):
-        encrypted_text = caesar_cipher_encode(input_text, key)
-        indices_encrypted = [(alphabet_lower.index(char) + key) % len(alphabet_lower) if char in alphabet_lower else -1 for char in input_text.lower()]
-        valid_indices_encrypted = [idx for idx in indices_encrypted if idx != -1]
-        encrypted_labels = [char for char, idx in zip(encrypted_text, indices_encrypted) if idx != -1]
+    # Şifrelenmiş örnek metin
+    def caesar_cipher_encode(plaintext, key):
+        alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
+        alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
+        ciphertext = []
+        for char in plaintext:
+            if char in alphabet_lower:
+                new_position = (alphabet_lower.index(char) + key) % len(alphabet_lower)
+                ciphertext.append(alphabet_lower[new_position])
+            elif char in alphabet_upper:
+                new_position = (alphabet_upper.index(char) + key) % len(alphabet_upper)
+                ciphertext.append(alphabet_upper[new_position])
+            else:
+                ciphertext.append(char)
+        return ''.join(ciphertext)
+    
+    encrypted_example = caesar_cipher_encode(example_text, example_key)
+    st.write(f"**Şifrelenmiş Metin:** {encrypted_example}")
+    
+    # Önemli terimleri bilgi kutuları ile vurgulama
+    st.markdown("<h4 style='color:#FFD700;'>📘 Önemli Terimler</h4>", unsafe_allow_html=True)
+    st.info("**Anahtar (Key):** Şifreleme ve çözme işlemi için kullanılan kaydırma değeri.")
+    st.info("**Şifrelenmiş Metin (Ciphertext):** Şifreleme algoritması ile dönüştürülmüş metin.")
+    st.info("**Açık Metin (Plaintext):** Orijinal, şifrelenmemiş metin.")
 
-        fig, ax = plt.subplots()
-        ax.bar(range(len(valid_indices_encrypted)), valid_indices_encrypted, tick_label=encrypted_labels)
-        ax.set_xlabel("Şifrelenmiş Karakterler")
-        ax.set_ylabel("Şifrelenmiş İndeks Değerleri")
-        st.pyplot(fig)
-        st.write(f"**Şifrelenmiş Metin:** {encrypted_text}")
-        st.write(f"**Şifrelenmiş İndeks Değerleri:** {valid_indices_encrypted}")
-
-    st.write("3. Şifreli metni çözmek için anahtarı (key) paylaşın. Karakterlerin indekslerini **anahtar** sayısı kadar geri kaydırarak orijinal metni elde edebiliriz.")
+    # Emoji ile alt bilgi
+    st.caption("🔍 Sezar Şifreleme yöntemi tarih boyunca basit güvenlik önlemleri için yaygın olarak kullanılmıştır.")
 
 # Şifreleme Sekmesi
 with tab2:
