@@ -69,14 +69,15 @@ with tab1:
     alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
     positions = list(range(29))  # Pozisyonlar
     
-    # DataFrame oluştururken index parametresini kapatıyoruz
+    # DataFrame oluşturma ve indeksleri kaldırma
     table = pd.DataFrame({
         "Büyük Harf": list(alphabet_upper),
         "Küçük Harf": list(alphabet_lower),
         "İndeks": positions
-    })
-    st.dataframe(table, index=False)  # İndeks kolonu olmadan göster
+    }).reset_index(drop=True)  # İndeksleri kaldır
     
+    st.dataframe(table)  # Tabloyu göster
+
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
     st.write("Aşağıdaki örnekte, 'Merhaba Dünya' ifadesini 3 birim sağa kaydırarak nasıl şifrelediğimizi göreceksiniz.")
