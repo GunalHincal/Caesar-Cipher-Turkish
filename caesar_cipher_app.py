@@ -110,6 +110,34 @@ with tab1:
     st.info("**Anahtar (Key):** Şifreleme ve çözme işlemi için kullanılan kaydırma değeri.")
     st.info("**Şifrelenmiş Metin (Ciphertext):** Şifreleme algoritması ile dönüştürülmüş metin.")
     st.info("**Açık Metin (Plaintext):** Orijinal, şifrelenmemiş metin.")
+    
+    # Kullanıcı etkileşimi için alan
+    st.markdown("<h4 style='color:#FF6347;'>🧪 Deneme Alanı: Şifreleme ve Çözme İşlemini Kendiniz Deneyin</h4>", unsafe_allow_html=True)
+    
+    # Kullanıcıdan metin girişi
+    user_text = st.text_input("Şifrelemek istediğiniz metni buraya yazın:", "Merhaba Dünya")
+    user_key = st.number_input("Anahtar (Key) değeri seçin:", min_value=1, max_value=29, value=3, step=1)
+    
+    if st.button("Şifrele ve İndeksleri Göster"):
+        encrypted_user_text = caesar_cipher_encode(user_text, user_key)
+        
+        # Şifrelenmiş metni ve indeksleri göster
+        indices_original = [(alphabet_lower.index(char.lower()) if char.lower() in alphabet_lower else -1) for char in user_text]
+        indices_encrypted = [(alphabet_lower.index(char.lower()) + user_key) % len(alphabet_lower) if char.lower() in alphabet_lower else -1 for char in user_text]
+        
+        st.write(f"**Şifrelenmiş Metin:** {encrypted_user_text}")
+        st.write("### İndeksler")
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.write("**Orijinal Karakterler**")
+            st.write(list(user_text))
+        with col2:
+            st.write("**Orijinal İndeksler**")
+            st.write(indices_original)
+        with col3:
+            st.write("**Şifrelenmiş İndeksler**")
+            st.write(indices_encrypted)
 
     # Emoji ile alt bilgi
     st.caption("🔍 Sezar Şifreleme yöntemi tarih boyunca basit güvenlik önlemleri için yaygın olarak kullanılmıştır.")
