@@ -69,12 +69,13 @@ with tab1:
     alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
     positions = list(range(29))  # Pozisyonlar
     
+    # DataFrame oluştururken index parametresini kapatıyoruz
     table = pd.DataFrame({
         "Büyük Harf": list(alphabet_upper),
         "Küçük Harf": list(alphabet_lower),
         "İndeks": positions
     })
-    st.dataframe(table.style.highlight_max(axis=0), width=500)
+    st.dataframe(table, index=False)  # İndeks kolonu olmadan göster
     
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
