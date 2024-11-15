@@ -56,7 +56,8 @@ with tab1:
     st.write("### Türkçe Alfabesi ve İndeksleme")
     positions = list(range(29))  # 0-28 arası pozisyonlar
     table = pd.DataFrame({
-        "Alfabe": list(alphabet_upper),  # Büyük harflerle başlayarak
+        "Büyük Harfler": list(alphabet_upper),
+        "Küçük Harfler": list(alphabet_lower),
         "İndeks": positions
     })
     st.dataframe(table)
@@ -65,27 +66,35 @@ with tab1:
     st.write("### Etkileşimli Şifreleme ve Çözme İşlemi")
     st.write("1. Aşağıya **Merhaba Dünya** yazın ve 'Göster' butonuna basın.")
     input_text = st.text_input("Şifrelemek istediğiniz metni yazın:", "Merhaba Dünya")
+    
     if st.button("Göster"):
-        indices = [alphabet_lower.index(char) if char in alphabet_lower else None for char in input_text.lower()]
+        indices = [alphabet_lower.index(char) if char in alphabet_lower else -1 for char in input_text.lower()]
+        valid_indices = [idx for idx in indices if idx != -1]
+        labels = [char for char, idx in zip(input_text, indices) if idx != -1]
+        
         fig, ax = plt.subplots()
-        ax.bar(range(len(input_text)), indices, tick_label=list(input_text))
+        ax.bar(range(len(valid_indices)), valid_indices, tick_label=labels)
         ax.set_xlabel("Karakterler")
         ax.set_ylabel("İndeks Değerleri")
         st.pyplot(fig)
-        st.write(f"**İndeks Değerleri:** {indices}")
+        st.write(f"**İndeks Değerleri:** {valid_indices}")
 
     st.write("2. Şifrelemek için bir anahtar (örneğin 3) seçin ve 'Şifrele' butonuna basın.")
     key = st.number_input("Anahtar (key) değeri seçin:", min_value=1, max_value=29, value=3, step=1)
+    
     if st.button("Şifrele"):
         encrypted_text = caesar_cipher_encode(input_text, key)
-        indices_encrypted = [(alphabet_lower.index(char) + key) % len(alphabet_lower) if char in alphabet_lower else None for char in input_text.lower()]
+        indices_encrypted = [(alphabet_lower.index(char) + key) % len(alphabet_lower) if char in alphabet_lower else -1 for char in input_text.lower()]
+        valid_indices_encrypted = [idx for idx in indices_encrypted if idx != -1]
+        encrypted_labels = [char for char, idx in zip(encrypted_text, indices_encrypted) if idx != -1]
+
         fig, ax = plt.subplots()
-        ax.bar(range(len(input_text)), indices_encrypted, tick_label=list(encrypted_text))
+        ax.bar(range(len(valid_indices_encrypted)), valid_indices_encrypted, tick_label=encrypted_labels)
         ax.set_xlabel("Şifrelenmiş Karakterler")
         ax.set_ylabel("Şifrelenmiş İndeks Değerleri")
         st.pyplot(fig)
         st.write(f"**Şifrelenmiş Metin:** {encrypted_text}")
-        st.write(f"**Şifrelenmiş İndeks Değerleri:** {indices_encrypted}")
+        st.write(f"**Şifrelenmiş İndeks Değerleri:** {valid_indices_encrypted}")
 
     st.write("3. Şifreli metni çözmek için anahtarı (key) paylaşın. Karakterlerin indekslerini **anahtar** sayısı kadar geri kaydırarak orijinal metni elde edebiliriz.")
 
