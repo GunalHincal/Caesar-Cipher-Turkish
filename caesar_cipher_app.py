@@ -206,8 +206,8 @@ st.caption("Sezar Şifreleme ve Çözme Aracı - Güvenli ve Eğlenceli! ")
 
 st.caption("Sezar'ın hakkı Sezar'a! 😆")
 
-    # Emoji ile alt bilgi
-    st.caption("🔍 Sezar Şifreleme yöntemi tarih boyunca basit güvenlik önlemleri için yaygın olarak kullanılmıştır.")
+# Emoji ile alt bilgi
+st.caption("🔍 Sezar Şifreleme yöntemi tarih boyunca basit güvenlik önlemleri için yaygın olarak kullanılmıştır.")
 
 # Şifreleme Sekmesi
 with tab2:
