@@ -68,13 +68,18 @@ with tab1:
     # Algoritmanın açıklaması
     st.markdown("<h4 style='color:#FF6347;'>Adım Adım Sezar Şifreleme</h4>", unsafe_allow_html=True)
     
+    st.write("")
+    st.write("")
+    
     st.write("""
     1. 🔑**Anahtar Seçin**: Şifreleme işlemi için bir kaydırma değeri (örneğin, 3) belirleyin.
     2. 🔐**Şifreleme İşlemi**: Her harfi anahtar değeri kadar ileri kaydırın.
     3. 🔓**Çözme İşlemi**: Şifrelenmiş metni geri almak için her harfi anahtar değeri kadar geri kaydırın.
     """)
+    
     st.write("")
     st.write("")
+    
     # Algoritmanın nasıl çalıştığını açıklayan tablo
     st.markdown("<h5 style='color:#32CD32;'>🔡 Türkçe Alfabesi ve İndeksleme</h5>", unsafe_allow_html=True)
     alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
@@ -87,6 +92,9 @@ with tab1:
         "İndeks": positions
     })
     st.dataframe(table, width=400)
+
+    st.write("")
+    st.write("")
     
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>📝 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
@@ -116,12 +124,18 @@ with tab1:
     
     encrypted_example = caesar_cipher_encode(example_text, example_key)
     st.write(f"**Şifrelenmiş Metin:** {encrypted_example}")
+
+    st.write("")
+    st.write("")
     
     # Önemli terimleri bilgi kutuları ile vurgulama
     st.markdown("<h4 style='color:#FFD700;'>⚠️ Önemli Terimler</h4>", unsafe_allow_html=True)
     st.info("**Anahtar (Key):** Şifreleme ve çözme işlemi için kullanılan kaydırma değeri.")
     st.info("**Şifrelenmiş Metin (Ciphertext):** Şifreleme algoritması ile dönüştürülmüş metin.")
     st.info("**Açık Metin (Plaintext):** Orijinal, şifrelenmemiş metin.")
+
+    st.write("")
+    st.write("")
     
     # Kullanıcı etkileşimi için alan
     st.markdown("<h4 style='color:#FF6347;'>🧪 Deneme Alanı: Şifreleme ve Çözme İşlemini Kendiniz Deneyin</h4>", unsafe_allow_html=True)
