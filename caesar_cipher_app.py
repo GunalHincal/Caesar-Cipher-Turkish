@@ -62,11 +62,24 @@ with tab1:
     # Giriş açıklaması
     st.write("""
     Sezar Şifreleme, harflerin belirli bir kaydırma sayısına göre ileri veya geri alınarak şifrelendiği basit bir algoritmadır. 
-    Bu yöntem, harfleri belirli bir kaydırma sayısına göre değiştirerek mesajları gizlemek için kullanılır. 
-    Sezar, orduları arasındaki iletişimi korumak için bu yöntemi kullanmıştır.
-    Örneğin, bir harf 3 birim sağa kaydırılarak şifrelenebilir ve çözme işlemi için 3 birim sola kaydırılarak orijinal haline döndürülür.
+    Bu yöntem, Jül Sezar tarafından M.Ö. 1. yüzyılda, orduları arasındaki iletişimi güvenli hale getirmek için geliştirilmiştir. 
+    Sezar, düşmanlarının mesajları kolayca okuyamamasını sağlamak amacıyla, harflerin yerini belirli bir kaydırma değeriyle değiştiren bu yöntemi kullanmıştır.
+
+    Örneğin, bir mesajdaki her harf 3 birim sağa kaydırılarak şifrelenebilir. Şifrelenmiş bir mesajı çözmek için ise aynı işlem 3 birim sola kaydırılarak orijinal haline döndürülür. 
+    Bu, mesajların yalnızca belirli bir "anahtar" değerine sahip kişiler tarafından anlaşılmasını sağlar.
+
+    **Tarihsel Arka Plan:** Jül Sezar, ordusunun Galya'daki (günümüz Fransa) seferleri sırasında bu yöntemi kullanmıştır. Askerler ve komutanlar arasındaki mesajlar, 
+    Sezar’ın belirlediği anahtar (örneğin, 3) ile şifrelenerek gizli tutulmuştur. Bu basit ama etkili yöntem, dönemin düşmanlarının iletişimi kolayca deşifre etmesini engellemiştir.
     """)
-    st.write("**Kullanım Alanları:** Bu şifreleme yöntemi, özellikle basit güvenlik önlemleri için kullanılır ve tarih boyunca şifreli iletişimi sağlamak için yaygın olarak kullanılmıştır.")
+
+    # Kullanım alanları
+    st.write("**Kullanım Alanları:**")
+    st.write("""
+    - Ordular arası gizli iletişim
+    - Basit şifreleme yöntemleri ile veri gizliliği sağlama
+    - Günümüzde eğitimde şifreleme mantığını öğretmek için kullanılan örnek bir algoritma
+    """)
+
 
     st.write("")
     st.write("")
