@@ -139,6 +139,33 @@ with tab1:
             st.write("**Şifrelenmiş İndeksler**")
             st.write(indices_encrypted)
 
+    
+    # Şifrelenmiş örnek metin
+    def caesar_cipher_encode(plaintext, key):
+        alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
+        alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
+        ciphertext = []
+        for char in plaintext:
+            if char in alphabet_lower:
+                new_position = (alphabet_lower.index(char) + key) % len(alphabet_lower)
+                ciphertext.append(alphabet_lower[new_position])
+            elif char in alphabet_upper:
+                new_position = (alphabet_upper.index(char) + key) % len(alphabet_upper)
+                ciphertext.append(alphabet_upper[new_position])
+            else:
+                ciphertext.append(char)
+        return ''.join(ciphertext)
+    
+    encrypted_example = caesar_cipher_encode(example_text, example_key)
+    st.write(f"**Şifrelenmiş Metin:** {encrypted_example}")
+    
+    # Önemli terimleri bilgi kutuları ile vurgulama
+    st.markdown("<h4 style='color:#FFD700;'>📘 Önemli Terimler</h4>", unsafe_allow_html=True)
+    st.info("**Anahtar (Key):** Şifreleme ve çözme işlemi için kullanılan kaydırma değeri.")
+    st.info("**Şifrelenmiş Metin (Ciphertext):** Şifreleme algoritması ile dönüştürülmüş metin.")
+    st.info("**Açık Metin (Plaintext):** Orijinal, şifrelenmemiş metin.")
+
+
     # Emoji ile alt bilgi
     st.caption("🔍 Sezar Şifreleme yöntemi tarih boyunca basit güvenlik önlemleri için yaygın olarak kullanılmıştır.")
 
