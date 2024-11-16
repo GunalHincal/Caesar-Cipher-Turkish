@@ -58,7 +58,7 @@ with tab1:
     st.write("**Kullanım Alanları:** Bu şifreleme yöntemi, özellikle basit güvenlik önlemleri için kullanılır ve tarih boyunca şifreli iletişimi sağlamak için yaygın olarak kullanılmıştır.")
     
     # Algoritmanın açıklaması
-    st.markdown("<h4 style='color:#FF6347;'>📜 Adım Adım Sezar Şifreleme</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color:#FF6347;'>Adım Adım Sezar Şifreleme</h4>", unsafe_allow_html=True)
     
     st.write("""
     1. 🔑**Anahtar Seçin**: Şifreleme işlemi için bir kaydırma değeri (örneğin, 3) belirleyin.
@@ -67,7 +67,7 @@ with tab1:
     """)
     
     # Algoritmanın nasıl çalıştığını açıklayan tablo
-    st.markdown("<h5 style='color:#32CD32;'>📊 Türkçe Alfabesi ve İndeksleme</h5>", unsafe_allow_html=True)
+    st.markdown("<h5 style='color:#32CD32;'>🔡 Türkçe Alfabesi ve İndeksleme</h5>", unsafe_allow_html=True)
     alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
     alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
     positions = list(range(29))  # Pozisyonlar
@@ -109,7 +109,7 @@ with tab1:
     st.write(f"**Şifrelenmiş Metin:** {encrypted_example}")
     
     # Önemli terimleri bilgi kutuları ile vurgulama
-    st.markdown("<h4 style='color:#FFD700;'>📘 Önemli Terimler</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color:#FFD700;'>⚠️ Önemli Terimler</h4>", unsafe_allow_html=True)
     st.info("**Anahtar (Key):** Şifreleme ve çözme işlemi için kullanılan kaydırma değeri.")
     st.info("**Şifrelenmiş Metin (Ciphertext):** Şifreleme algoritması ile dönüştürülmüş metin.")
     st.info("**Açık Metin (Plaintext):** Orijinal, şifrelenmemiş metin.")
