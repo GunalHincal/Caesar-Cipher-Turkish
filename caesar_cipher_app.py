@@ -38,7 +38,7 @@ def caesar_cipher_decode(ciphertext, key):
     return ''.join(plaintext)
 
 # Streamlit uygulaması
-st.title("Sezar Şifreleme ve Çözme Aracı")
+st.title("Sezar Şifreleme (Caesar Cipher)")
 st.write("Metinlerinizi güvenli bir şekilde şifreleyin veya şifrelerini çözün!")
     
 st.write("")
@@ -61,7 +61,9 @@ with tab1:
 
     # Giriş açıklaması
     st.write("""
-    Sezar Şifreleme, harflerin belirli bir kaydırma sayısına göre ileri veya geri alınarak şifrelendiği basit bir algoritmadır.
+    Sezar Şifreleme, harflerin belirli bir kaydırma sayısına göre ileri veya geri alınarak şifrelendiği basit bir algoritmadır. 
+    Bu yöntem, harfleri belirli bir kaydırma sayısına göre değiştirerek mesajları gizlemek için kullanılır. 
+    Sezar, orduları arasındaki iletişimi korumak için bu yöntemi kullanmıştır.
     Örneğin, bir harf 3 birim sağa kaydırılarak şifrelenebilir ve çözme işlemi için 3 birim sola kaydırılarak orijinal haline döndürülür.
     """)
     st.write("**Kullanım Alanları:** Bu şifreleme yöntemi, özellikle basit güvenlik önlemleri için kullanılır ve tarih boyunca şifreli iletişimi sağlamak için yaygın olarak kullanılmıştır.")
