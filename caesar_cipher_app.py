@@ -199,3 +199,5 @@ st.write("---")
 st.caption("Sezar Şifreleme ve Çözme Aracı - Güvenli ve Eğlenceli! ")
 
 st.caption("📝 Sezar'ın hakkı Sezar'a! 😆")
+
+st.image("caesar_statue.jpeg", caption="Sezar Şifreleme Algoritması'nın Tarihsel Sembolü")
