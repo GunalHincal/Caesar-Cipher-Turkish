@@ -69,15 +69,13 @@ with tab1:
     alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
     positions = list(range(29))  # Pozisyonlar
     
-    # DataFrame oluşturma ve indeksleri kaldırma
     table = pd.DataFrame({
         "Büyük Harf": list(alphabet_upper),
         "Küçük Harf": list(alphabet_lower),
         "İndeks": positions
-    }).reset_index(drop=True)  # İndeksleri kaldır
+    })
+    st.dataframe(table.style.highlight_max(axis=0), width=500)
     
-    st.dataframe(table)  # Tabloyu göster
-
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
     st.write("Aşağıdaki örnekte, 'Merhaba Dünya' ifadesini 3 birim sağa kaydırarak nasıl şifrelediğimizi göreceksiniz.")
@@ -140,19 +138,6 @@ with tab1:
         with col3:
             st.write("**Şifrelenmiş İndeksler**")
             st.write(indices_encrypted)
-
-            # Şifrelenmiş metni ve indeksleri göster
-        indices_original = [(alphabet_lower.index(char.lower()) if char.lower() in alphabet_lower else -1) for char in user_text]
-        indices_encrypted = [(alphabet_lower.index(char.lower()) + user_key) % len(alphabet_lower) if char.lower() in alphabet_lower else -1 for char in user_text]
-        
-        st.write(f"**Şifrelenmiş Metin:** {encrypted_user_text}")
-        
-        # İndeks grafiğini oluştur ve genişlet
-        fig, ax = plt.subplots(figsize=(10, 3))
-        ax.bar(range(len(user_text)), indices_encrypted, tick_label=list(user_text))
-        ax.set_xlabel("Karakterler")
-        ax.set_ylabel("İndeksler (Şifrelenmiş)")
-        st.pyplot(fig)
 
     # Emoji ile alt bilgi
     st.caption("🔍 Sezar Şifreleme yöntemi tarih boyunca basit güvenlik önlemleri için yaygın olarak kullanılmıştır.")
