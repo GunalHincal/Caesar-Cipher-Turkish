@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ee# -*- coding: utf-8 -*-
 
 import streamlit as st
 import pandas as pd
@@ -198,6 +198,6 @@ with tab3:
 st.write("---")
 st.caption("Sezar Şifreleme ve Çözme Aracı - Güvenli ve Eğlenceli! ")
 
-st.caption("📝 Sezar'ın hakkı Sezar'a! 😆")
+st.caption("📝 Eee Sezar'ın hakkı Sezar'a! 😆")
 
 st.image("caesar_statue.jpeg", caption="Benden Bahsetmeyin LAN!", width=250)
