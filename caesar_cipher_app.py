@@ -44,11 +44,18 @@ st.write("Metinlerinizi güvenli bir şekilde şifreleyin veya şifrelerini çö
 # Yan sekmeler oluştur
 tab1, tab2, tab3 = st.tabs(["Sezar Şifreleme Algoritması", "Şifreleme (Encode)", "Çözme (Decode)"])
 
+import os
+print(os.getcwd())  # Çalıştığınız dizini kontrol edin
+print(os.path.exists("caesar_cipher_ring.jpg"))  # Dosyanın mevcut olup olmadığını kontrol edin
 
 # Açıklama Sekmesi
 with tab1:
     # Renkli bir başlık
     st.markdown("<h3 style='color:#4A90E2;'>Sezar Şifreleme Algoritması Nedir?</h3>", unsafe_allow_html=True)
+    
+    # Görsel ekleme (Sezar Çarkı)
+    st.image("caesar_cipher_ring.jpeg", caption="Sezar Şifreleme Algoritması'nın Tarihsel Sembolü", width=400)
+
     
     # Giriş açıklaması
     st.write("""
@@ -56,8 +63,6 @@ with tab1:
     Örneğin, bir harf 3 birim sağa kaydırılarak şifrelenebilir ve çözme işlemi için 3 birim sola kaydırılarak orijinal haline döndürülür.
     """)
     st.write("**Kullanım Alanları:** Bu şifreleme yöntemi, özellikle basit güvenlik önlemleri için kullanılır ve tarih boyunca şifreli iletişimi sağlamak için yaygın olarak kullanılmıştır.")
-
-    st.image("caesar_cipher_ring.jpg", caption="Sezar Şifreleme Algoritması'nın Tarihsel Sembolü", width=400)
 
     
     # Algoritmanın açıklaması
