@@ -38,7 +38,7 @@ def caesar_cipher_decode(ciphertext, key):
     return ''.join(plaintext)
 
 # Streamlit uygulaması
-st.title("🔐 Sezar Şifreleme ve Çözme Aracı")
+st.title("Sezar Şifreleme ve Çözme Aracı")
 st.write("Metinlerinizi güvenli bir şekilde şifreleyin veya şifrelerini çözün!")
 
 # Yan sekmeler oluştur
