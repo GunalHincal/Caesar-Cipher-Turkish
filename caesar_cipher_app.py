@@ -48,14 +48,14 @@ tab1, tab2, tab3 = st.tabs(["Sezar Şifreleme Algoritması", "Şifreleme (Encode
 # Açıklama Sekmesi
 with tab1:
     # Renkli bir başlık
-    st.markdown("<h2 style='color:#4A90E2;'>Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:#4A90E2;'>Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
     
     # Giriş açıklaması
     st.write("Sezar Şifreleme, harfleri belirli bir kaydırma sayısına göre ileri veya geri alarak yapılan basit bir şifreleme algoritmasıdır. "
              "Örneğin, bir harfi 3 birim sağa kaydırarak şifreleyebilir ve çözmek için aynı miktarda sola kaydırabilirsiniz.")
     
     # Algoritmanın açıklaması
-    st.markdown("<h3 style='color:#FF6347;'>📜 Adım Adım Sezar Şifreleme</h3>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color:#FF6347;'>📜 Adım Adım Sezar Şifreleme</h3>", unsafe_allow_html=True)
     
     st.write("""
     1. **Anahtar Seçin** 🔑: Şifreleme işlemi için bir kaydırma değeri (örneğin, 3) belirleyin.
@@ -74,7 +74,7 @@ with tab1:
         "Küçük Harf": list(alphabet_lower),
         "İndeks": positions
     })
-    st.dataframe(table.style.highlight_max(axis=0), width=500)
+    st.dataframe(table)
     
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
