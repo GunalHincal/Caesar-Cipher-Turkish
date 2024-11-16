@@ -54,9 +54,9 @@ with tab1:
     st.markdown("<h3 style='color:#4A90E2;'>Sezar Şifreleme Algoritması Nedir?</h3>", unsafe_allow_html=True)
     
     # Görsel ekleme (Sezar Çarkı)
-    st.image("caesar_cipher_ring.jpeg", caption="Sezar Şifreleme Algoritması'nın Tarihsel Sembolü", width=400)
+    st.image("caesar_cipher_ring.jpeg", caption="Sezar Şifreleme Algoritması'nın Tarihsel Sembolü", width=100)
 
-    
+
     # Giriş açıklaması
     st.write("""
     Sezar Şifreleme, harflerin belirli bir kaydırma sayısına göre ileri veya geri alınarak şifrelendiği basit bir algoritmadır.
