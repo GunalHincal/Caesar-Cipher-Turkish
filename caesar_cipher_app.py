@@ -48,7 +48,7 @@ tab1, tab2, tab3 = st.tabs(["Sezar Şifreleme Algoritması", "Şifreleme (Encode
 # Açıklama Sekmesi
 with tab1:
     # Renkli bir başlık
-    st.markdown("<h2 style='color:#4A90E2;'>🔐 Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#4A90E2;'>Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
     
     # Giriş açıklaması
     st.write("Sezar Şifreleme, harfleri belirli bir kaydırma sayısına göre ileri veya geri alarak yapılan basit bir şifreleme algoritmasıdır. "
@@ -62,6 +62,7 @@ with tab1:
     2. **Şifreleme İşlemi** 🔐: Her harfi anahtar değeri kadar ileri kaydırın.
     3. **Çözme İşlemi** 🔓: Şifrelenmiş metni geri almak için her harfi anahtar değeri kadar geri kaydırın.
     """)
+
     
     # Algoritmanın nasıl çalıştığını açıklayan tablo
     st.markdown("<h4 style='color:#32CD32;'>📊 Türkçe Alfabesi ve İndeksleme</h4>", unsafe_allow_html=True)
@@ -75,69 +76,18 @@ with tab1:
         "İndeks": positions
     })
     st.dataframe(table.style.highlight_max(axis=0), width=500)
+
     
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
     st.write("Aşağıdaki örnekte, 'Merhaba Dünya' ifadesini 3 birim sağa kaydırarak nasıl şifrelediğimizi göreceksiniz.")
 
+    
     # Örnek metin
     example_text = "Merhaba Dünya"
     example_key = 3
     st.write(f"**Girdi:** {example_text}")
     st.write(f"**Anahtar (Key):** {example_key}")
-    
-    # Şifrelenmiş örnek metin
-    def caesar_cipher_encode(plaintext, key):
-        alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
-        alphabet_upper = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ"
-        ciphertext = []
-        for char in plaintext:
-            if char in alphabet_lower:
-                new_position = (alphabet_lower.index(char) + key) % len(alphabet_lower)
-                ciphertext.append(alphabet_lower[new_position])
-            elif char in alphabet_upper:
-                new_position = (alphabet_upper.index(char) + key) % len(alphabet_upper)
-                ciphertext.append(alphabet_upper[new_position])
-            else:
-                ciphertext.append(char)
-        return ''.join(ciphertext)
-    
-    encrypted_example = caesar_cipher_encode(example_text, example_key)
-    st.write(f"**Şifrelenmiş Metin:** {encrypted_example}")
-    
-    # Önemli terimleri bilgi kutuları ile vurgulama
-    st.markdown("<h4 style='color:#FFD700;'>📘 Önemli Terimler</h4>", unsafe_allow_html=True)
-    st.info("**Anahtar (Key):** Şifreleme ve çözme işlemi için kullanılan kaydırma değeri.")
-    st.info("**Şifrelenmiş Metin (Ciphertext):** Şifreleme algoritması ile dönüştürülmüş metin.")
-    st.info("**Açık Metin (Plaintext):** Orijinal, şifrelenmemiş metin.")
-    
-    # Kullanıcı etkileşimi için alan
-    st.markdown("<h4 style='color:#FF6347;'>🧪 Deneme Alanı: Şifreleme ve Çözme İşlemini Kendiniz Deneyin</h4>", unsafe_allow_html=True)
-    
-    # Kullanıcıdan metin girişi
-    user_text = st.text_input("Şifrelemek istediğiniz metni buraya yazın:", "Merhaba Dünya")
-    user_key = st.number_input("Anahtar (Key) değeri seçin:", min_value=1, max_value=29, value=3, step=1)
-    
-    if st.button("Şifrele ve İndeksleri Göster"):
-        encrypted_user_text = caesar_cipher_encode(user_text, user_key)
-        
-        # Şifrelenmiş metni ve indeksleri göster
-        indices_original = [(alphabet_lower.index(char.lower()) if char.lower() in alphabet_lower else -1) for char in user_text]
-        indices_encrypted = [(alphabet_lower.index(char.lower()) + user_key) % len(alphabet_lower) if char.lower() in alphabet_lower else -1 for char in user_text]
-        
-        st.write(f"**Şifrelenmiş Metin:** {encrypted_user_text}")
-        st.write("### İndeksler")
-        
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.write("**Orijinal Karakterler**")
-            st.write(list(user_text))
-        with col2:
-            st.write("**Orijinal İndeksler**")
-            st.write(indices_original)
-        with col3:
-            st.write("**Şifrelenmiş İndeksler**")
-            st.write(indices_encrypted)
 
     
     # Şifrelenmiş örnek metin
@@ -158,6 +108,7 @@ with tab1:
     
     encrypted_example = caesar_cipher_encode(example_text, example_key)
     st.write(f"**Şifrelenmiş Metin:** {encrypted_example}")
+
     
     # Önemli terimleri bilgi kutuları ile vurgulama
     st.markdown("<h4 style='color:#FFD700;'>📘 Önemli Terimler</h4>", unsafe_allow_html=True)
@@ -165,7 +116,7 @@ with tab1:
     st.info("**Şifrelenmiş Metin (Ciphertext):** Şifreleme algoritması ile dönüştürülmüş metin.")
     st.info("**Açık Metin (Plaintext):** Orijinal, şifrelenmemiş metin.")
 
-
+    
     # Emoji ile alt bilgi
     st.caption("🔍 Sezar Şifreleme yöntemi tarih boyunca basit güvenlik önlemleri için yaygın olarak kullanılmıştır.")
 
