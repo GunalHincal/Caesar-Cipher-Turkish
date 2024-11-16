@@ -56,6 +56,9 @@ with tab1:
     Örneğin, bir harf 3 birim sağa kaydırılarak şifrelenebilir ve çözme işlemi için 3 birim sola kaydırılarak orijinal haline döndürülür.
     """)
     st.write("**Kullanım Alanları:** Bu şifreleme yöntemi, özellikle basit güvenlik önlemleri için kullanılır ve tarih boyunca şifreli iletişimi sağlamak için yaygın olarak kullanılmıştır.")
+
+    st.image("caesar_cipher_ring.jpg", caption="Sezar Şifreleme Algoritması'nın Tarihsel Sembolü", width=400)
+
     
     # Algoritmanın açıklaması
     st.markdown("<h4 style='color:#FF6347;'>Adım Adım Sezar Şifreleme</h4>", unsafe_allow_html=True)
