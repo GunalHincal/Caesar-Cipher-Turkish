@@ -74,7 +74,7 @@ with tab1:
         "Küçük Harf": list(alphabet_lower),
         "İndeks": positions
     })
-    st.dataframe(table)
+    st.dataframe(table, width=400)
     
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
