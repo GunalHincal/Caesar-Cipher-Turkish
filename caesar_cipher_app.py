@@ -48,7 +48,7 @@ tab1, tab2, tab3 = st.tabs(["Sezar Şifreleme Algoritması", "Şifreleme (Encode
 # Açıklama Sekmesi
 with tab1:
     # Renkli bir başlık
-    st.markdown("<h2 style='color:#4A90E2;'>❔ Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color:#4A90E2;'>🔐 Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
     
     # Giriş açıklaması
     st.write("Sezar Şifreleme, harfleri belirli bir kaydırma sayısına göre ileri veya geri alarak yapılan basit bir şifreleme algoritmasıdır. "
@@ -62,7 +62,7 @@ with tab1:
     2. **Şifreleme İşlemi** 🔐: Her harfi anahtar değeri kadar ileri kaydırın.
     3. **Çözme İşlemi** 🔓: Şifrelenmiş metni geri almak için her harfi anahtar değeri kadar geri kaydırın.
     """)
-
+    
     # Algoritmanın nasıl çalıştığını açıklayan tablo
     st.markdown("<h4 style='color:#32CD32;'>📊 Türkçe Alfabesi ve İndeksleme</h4>", unsafe_allow_html=True)
     alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
@@ -74,9 +74,9 @@ with tab1:
         "Büyük Harf": list(alphabet_upper),
         "Küçük Harf": list(alphabet_lower),
         "İndeks": positions
-    })
-
-    st.dataframe(table, width=500)  # Tabloyu sıralama sütunu olmadan göster
+    }).reset_index(drop=True)  # İndeksleri kaldır
+    
+    st.dataframe(table)  # Tabloyu göster
 
     # Kullanıcı etkileşimi için örnek
     st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
@@ -124,6 +124,24 @@ with tab1:
         encrypted_user_text = caesar_cipher_encode(user_text, user_key)
         
         # Şifrelenmiş metni ve indeksleri göster
+        indices_original = [(alphabet_lower.index(char.lower()) if char.lower() in alphabet_lower else -1) for char in user_text]
+        indices_encrypted = [(alphabet_lower.index(char.lower()) + user_key) % len(alphabet_lower) if char.lower() in alphabet_lower else -1 for char in user_text]
+        
+        st.write(f"**Şifrelenmiş Metin:** {encrypted_user_text}")
+        st.write("### İndeksler")
+        
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.write("**Orijinal Karakterler**")
+            st.write(list(user_text))
+        with col2:
+            st.write("**Orijinal İndeksler**")
+            st.write(indices_original)
+        with col3:
+            st.write("**Şifrelenmiş İndeksler**")
+            st.write(indices_encrypted)
+
+            # Şifrelenmiş metni ve indeksleri göster
         indices_original = [(alphabet_lower.index(char.lower()) if char.lower() in alphabet_lower else -1) for char in user_text]
         indices_encrypted = [(alphabet_lower.index(char.lower()) + user_key) % len(alphabet_lower) if char.lower() in alphabet_lower else -1 for char in user_text]
         
