@@ -80,7 +80,7 @@ with tab1:
     st.dataframe(table, width=400)
     
     # Kullanıcı etkileşimi için örnek
-    st.markdown("<h4 style='color:#FF6347;'>💡 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color:#FF6347;'>📝 Örnek Şifreleme İşlemi</h4>", unsafe_allow_html=True)
     st.write("Aşağıdaki örnekte, 'Merhaba Dünya' ifadesini 3 birim sağa kaydırarak nasıl şifrelediğimizi göreceksiniz.")
 
     # Örnek metin
