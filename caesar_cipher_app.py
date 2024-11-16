@@ -73,7 +73,8 @@ with tab1:
     2. 🔐**Şifreleme İşlemi**: Her harfi anahtar değeri kadar ileri kaydırın.
     3. 🔓**Çözme İşlemi**: Şifrelenmiş metni geri almak için her harfi anahtar değeri kadar geri kaydırın.
     """)
-    
+    st.write("")
+    st.write("")
     # Algoritmanın nasıl çalıştığını açıklayan tablo
     st.markdown("<h5 style='color:#32CD32;'>🔡 Türkçe Alfabesi ve İndeksleme</h5>", unsafe_allow_html=True)
     alphabet_lower = "abcçdefgğhıijklmnoöprsştuüvyz"
