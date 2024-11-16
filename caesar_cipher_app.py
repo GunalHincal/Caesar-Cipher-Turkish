@@ -51,8 +51,11 @@ with tab1:
     st.markdown("<h3 style='color:#4A90E2;'>Sezar Şifreleme Algoritması Nedir?</h2>", unsafe_allow_html=True)
     
     # Giriş açıklaması
-    st.write("Sezar Şifreleme, harfleri belirli bir kaydırma sayısına göre ileri veya geri alarak yapılan basit bir şifreleme algoritmasıdır. "
-             "Örneğin, bir harfi 3 birim sağa kaydırarak şifreleyebilir ve çözmek için aynı miktarda sola kaydırabilirsiniz.")
+    st.write("""
+    Sezar Şifreleme, harflerin belirli bir kaydırma sayısına göre ileri veya geri alınarak şifrelendiği basit bir algoritmadır.
+    Örneğin, bir harf 3 birim sağa kaydırılarak şifrelenebilir ve çözme işlemi için 3 birim sola kaydırılarak orijinal haline döndürülür.
+    """)
+    st.write("**Kullanım Alanları:** Bu şifreleme yöntemi, özellikle basit güvenlik önlemleri için kullanılır ve tarih boyunca şifreli iletişimi sağlamak için yaygın olarak kullanılmıştır.")
     
     # Algoritmanın açıklaması
     st.markdown("<h4 style='color:#FF6347;'>📜 Adım Adım Sezar Şifreleme</h3>", unsafe_allow_html=True)
