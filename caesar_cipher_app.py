@@ -21,6 +21,29 @@ alphabet_en = {
 if "language" not in st.session_state:
     st.session_state.language = "tr"  # Türkçe
 
+# Arka plan görseli için CSS ekleme
+def add_sidebar_background(image_path):
+    st.markdown(
+        f"""
+        <style>
+        [data-testid="stSidebar"] {{
+            background-image: url("{image_path}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Görsel dosya yolu (görselinizi proje klasörüne eklediğinizden emin olun)
+image_path = "sidebar_background.jpg"
+
+# Sidebar için arka plan görseli ekleme
+add_sidebar_background(image_path)
+
+
 # Dil seçimi (Language selection)
 with st.sidebar:
     st.header("Dil Seçin / Choose Language")
