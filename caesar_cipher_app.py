@@ -20,20 +20,6 @@ alphabet_en = {
 # Varsayılan dil (default language)
 if "language" not in st.session_state:
     st.session_state.language = "tr"  # Türkçe
-    
-# CSS ile sidebar'a arka plan görseli ekleme
-st.markdown(
-    f"""
-    <style>
-    [data-testid="stSidebar"] {{
-        background-image: url("sidebar_background.jpg");
-        background-size: cover;
-        background-position: center;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 # Dil seçimi (Language selection)
 with st.sidebar:
