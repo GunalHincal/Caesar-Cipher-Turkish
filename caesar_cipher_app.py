@@ -313,7 +313,7 @@ with tab3:
 
 # Alt bilgi
 st.write("---")
-st.caption("Sezar Şifreleme ve Çözme Aracı - Güvenli ve Eğlenceli! " if lang == "tr" else "Caesar Cipher Tool - Secure and Fun!")
+st.caption("Sezar Şifreleme ve Çözme Aracı - Güvenli ve Eğlenceli! 👀" if lang == "tr" else "Caesar Cipher Tool - Secure and Fun! 👀")
 st.caption("📝 Eee Sezar'ın hakkı Sezar'a! 😆" if lang == "tr" else "📝 Give Caesar what belongs to Caesar! 😆")
 # Görsel ve açıklama
 st.image("caesar_statue.jpeg", caption="Benden Bahsetmeyin LAN!" if lang == "tr" else "Don't Mention Me, DUDE!", width=250)
