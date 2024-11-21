@@ -291,8 +291,11 @@ with tab2:
 # Çözme Sekmesi
 with tab3:
     st.header("🔓 Çözme Paneli" if lang == "tr" else "🔓 Decryption Panel")
+    
+    # Kullanıcıdan şifreli metin ve anahtar girdisi alınır
     ciphertext = st.text_area("Çözmek istediğiniz şifreli metni buraya yazın:" if lang == "tr" else "Enter the encrypted text you want to decrypt here:",
     placeholder="Şifreli metni buraya yazın..." if lang == "tr" else "Enter the encrypted text here...")
+    
     key = st.number_input(
         "Anahtar (key) değeri girin:" if lang == "tr" else
         "Enter the key value:",
@@ -301,10 +304,15 @@ with tab3:
         value=3,
         step=1,
         key="decode_key")
-    
+
+    # Çözme işlemi için buton
     if st.button("Çöz" if lang == "tr" else "Decrypt", key="decrypt_button"):
-        if ciphertext.strip():
-            decrypted_text = caesar_cipher_decode(ciphertext, key, alphabet["lower"], alphabet["upper"])
+        if ciphertext.strip(): # Kullanıcının metin girip girmediğini kontrol et
+            
+            # Çözme işlemini gerçekleştirme
+            decrypted_text = caesar_cipher_decode(ciphertext, key, alphabet)
+
+            # Çözümlenmiş metni ekrana yazdırma
             st.success(f"**{'Çözümlenmiş Metin' if lang == 'tr' else 'Decrypted Text'}:** {decrypted_text}")
         else:
             st.warning(
