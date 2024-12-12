@@ -5,6 +5,7 @@ The manual encoding and decoding of messages can be incredibly time-consuming, e
 This app provides a solution, streamlining the process and eliminating the frustration of tedious manual work.
 
 🎓 Features:
+
 • Encode and decode your messages effortlessly using the Caesar Cipher Algorithm.
 
 • A step-by-step guide is included within the app to help new users understand how it works.
